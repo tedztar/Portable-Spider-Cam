@@ -9,7 +9,7 @@ namespace WindowsFormsApp1
     class ConfigObject
     {
 
-        // 1. PROPERTIES. (ALLOWS THE CLASS TO RECOGNISE THESE PASSED VARIABLE NAMES.)
+        // 1. PROPERTIES. (THESE ARE THE MEMBER VARIABLES.)
 
         private int run_speed;
         private int max_x;
