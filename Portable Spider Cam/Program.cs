@@ -14,11 +14,9 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-            //CHECK IF FILE EXISTS BEFORE LOADING THE WINDOWS.FORM (GUI.)
-            
-            //SET THE DATA TO A CONFIGOBJECT
-            ConfigObject ConfigFile = new ConfigObject(0, 0, 0, 0, 0, 0, 0, 0, 0);
-            // TEST // Console.WriteLine(ConfigFile.GetDrum_Gear());
+            //RUN THE FILE SETUP.
+            FileHandlerObject FileHandler = new FileHandlerObject();
+            FileHandler.addFile("config.ini");
 
             //RUN THE WINDOWS.FORM (GUI.)
             Application.EnableVisualStyles();
