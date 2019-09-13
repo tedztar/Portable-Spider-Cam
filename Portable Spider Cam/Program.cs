@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
             
             //SET THE DATA TO A CONFIGOBJECT
             ConfigObject ConfigFile = new ConfigObject(0, 0, 0, 0, 0, 0, 0, 0, 0);
-            Console.WriteLine(ConfigFile.GetDrum_Gear());
+            // TEST // Console.WriteLine(ConfigFile.GetDrum_Gear());
 
             //RUN THE WINDOWS.FORM (GUI.)
             Application.EnableVisualStyles();
