@@ -14,6 +14,13 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
+            //CHECK IF FILE EXISTS BEFORE LOADING THE WINDOWS.FORM (GUI.)
+            
+            //SET THE DATA TO A CONFIGOBJECT
+            ConfigObject ConfigFile = new ConfigObject(0, 0, 0, 0, 0, 0, 0, 0, 0);
+            Console.WriteLine(ConfigFile.GetDrum_Gear());
+
+            //RUN THE WINDOWS.FORM (GUI.)
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
