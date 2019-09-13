@@ -28,8 +28,8 @@ namespace WindowsFormsApp1
             int max_movement_speed, int drum_radius, int drum_gear, int motor_gear)
         {
 
-            //Put higher if computer is slow, movement will be less smooth. 
-            //Put lower if computer is not lagging, movement will be more smooth.
+            /*Put higher if computer is slow, movement will be less smooth. 
+            Put lower if computer is not lagging, movement will be more smooth.*/
             this.run_speed = run_speed;
             
             //Set as the width (in cm) of the "box" that the camera can fly in.
