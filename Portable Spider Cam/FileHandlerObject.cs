@@ -1,47 +1,102 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace PortableSpiderCam
 {
     class FileHandlerObject
     {
-        // 1. PROPERTIES. (ALLOWS THE CLASS TO RECOGNISE THESE PASSED VARIABLE NAMES.)
+        // Properties.
         private List<ConfigObject> list_Of_Files = new List<ConfigObject>();
 
-        // 2. CONSTRUCTOR. (ASSIGNS THE VALUES TO ITSELF: THE OBJECT.)
+        // Constructors.
         public FileHandlerObject()
         {
             this.list_Of_Files = new List<ConfigObject>();
         }
 
-        // 3. METHODS. (PROVIDE FUNCTIONS WHICH CAN BE USED THROUGHOUT THE MAIN CODE.)
-        public void addFile(string file_Name)
+        public void create_File(string file_Name)
         {
+            StreamWriter File = new StreamWriter(file_Name);
 
+            List<int> default_Config = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+            foreach (int value in default_Config)
+            {
+                File.WriteLine(value);
+            }
+
+            this.list_Of_Files.Add(new ConfigObject(file_Name, default_Config));
+
+            File.Close();
+        }
+
+        // Methods.
+        public void add_File(string file_Name)
+        {
             if (!File.Exists(file_Name))
             {
-                using (var file = new StreamWriter(file_Name, true))
-                {
-                    file.WriteLine("0,0,0,0,0,0,0,0,0");
-                }
-                this.list_Of_Files.Add(new ConfigObject(file_Name, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+                create_File(file_Name);
             }
             else
             {
-                using (var file = new StreamReader(file_Name, true))
+                StreamReader File = new StreamReader(file_Name);
+
+                List<int> selected_Config = new List<int>();
+                string line;
+
+                while ((line = File.ReadLine()) != null)
                 {
-                    foreach (string line in File.ReadAllLines(file_Name))
-                    {
-                        Console.WriteLine(line);
-                    }
+                    selected_Config.Add(Convert.ToInt32(line));
                 }
-                this.list_Of_Files.Add(new ConfigObject(file_Name, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+
+                this.list_Of_Files.Add(new ConfigObject(file_Name, selected_Config));
+
+                File.Close();
+            }
+        }
+
+        public int find_File(string file_Name)
+        {
+            int index = 0;
+
+            foreach (ConfigObject file in this.list_Of_Files)
+            {
+                if (file.get_File_Name() == file_Name)
+                {
+                    break;
+                }
+                else
+                {
+                    index += 1;
+                }
             }
 
+            return index;
+        }
+
+        public ConfigObject get_File(int file_Index)
+        {
+            return this.list_Of_Files[file_Index];
+        }
+
+        public List<ConfigObject> get_All_Files()
+        {
+            return this.list_Of_Files;
+        }
+
+        public void export_File(int file_Index)
+        {
+            ConfigObject File_Config = get_File(file_Index);
+
+            StreamWriter File = new StreamWriter(File_Config.get_File_Name());
+
+            foreach (int value in File_Config.get_Config())
+            {
+                File.WriteLine(value);
+            }
+
+            File.Close();
         }
 
     }
