@@ -17,6 +17,8 @@ namespace WindowsFormsApp1
             //RUN THE FILE SETUP.
             FileHandlerObject FileHandler = new FileHandlerObject();
             FileHandler.addFile("config.ini");
+            
+            //FileHandler.export_File(FileHandler.find_File("config.ini"));
 
             //RUN THE WINDOWS.FORM (GUI.)
             Application.EnableVisualStyles();
