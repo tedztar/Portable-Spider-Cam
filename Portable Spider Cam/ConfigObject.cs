@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PortableSpiderCam
+namespace WindowsFormsApp1
 {
     class ConfigObject
     {
